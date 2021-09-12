@@ -28,9 +28,14 @@ namespace AddEmpolyeeForm
 
         }
 
-        private void ClearEmpolyeeClick(Object sender,EventArgs arg)
+        private void ClearBtnClick (Object sender,EventArgs arg)
         {
 
+foreach(Control c in this.Controls)
+{
+if(c is TextBox)
+((TextBox)c).Text="";
+}
         }
         private void AddEmpolyeeClick(Object sender,EventArgs arg)
         {
@@ -73,6 +78,8 @@ namespace AddEmpolyeeForm
             //}
             //lblEmpolyeeSalariesSum.Text = SumEmpolyeeSalaries.ToString();
 
+             if(  TxtEmpolyeeId.Text!=""&&TxtEmpolyeeName.Text !=""&& TxtEmpolyeeSalary.Text!=""){
+             
             if(CmbEmpolyeeType.Text.Equals(EmpolyeeType.Teacher.ToString()))
             {
                 IEmpolyee teacher = EmployeeFactory.GetEmpolyeeInstance(EmpolyeeType.Teacher, Convert.ToInt32(TxtEmpolyeeId.Text), TxtEmpolyeeName.Text, Convert.ToDecimal(TxtEmpolyeeSalary.Text));
@@ -91,7 +98,9 @@ namespace AddEmpolyeeForm
            
             lblEmpolyeeCount.Text = empolyee.Count.ToString();
             lblEmpolyeeSalariesSum.Text = empolyee.Sum(e => e.Salary).ToString();
-        //    MessageBox.Show(CmbEmpolyeeType.Text);
+        }
+        else
+           MessageBox.show("There is field not fill");
         }
     }
 
