@@ -62,6 +62,7 @@ namespace AddEmpolyeeForm
             BtnClear.Location = new Point(500, 275);
             BtnClear.Size = new Size(100, 50);
             BtnClear.Text = "Clear";
+            BtnClear.Click+=ClearBtnClick;
             Controls.Add(BtnClear);
 
             /*The Required TextBox For Designer*/
